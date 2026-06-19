@@ -1,4 +1,11 @@
-venv/
 __pycache__/
+*.pyc
+venv/
 .env
-company.db
+
+db/brand_new_db/
+chroma.sqlite3
+
+query_logs.txt
+
+.streamlit/
