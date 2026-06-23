@@ -331,19 +331,6 @@ Records successfully retrieved and displayed.
 
 ---
 
-## 📸 Screenshots
-
-Add screenshots of:
-
-* Main Dashboard
-* Agent Workflow Panel
-* Generated SQL Output
-* Query Results
-* File Upload Interface
-
-These significantly improve project presentation and recruiter visibility.
-
----
 
 ## 👩‍💻 Author
 
