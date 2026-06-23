@@ -129,19 +129,20 @@ Users can view:
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stark
 
-| Component       | Technology       |
-| --------------- | ---------------- |
-| Frontend        | Streamlit        |
-| Backend         | Python           |
-| Database        | PostgreSQL       |
-| Vector Database | ChromaDB         |
-| Embeddings      | all-MiniLM-L6-v2 |
-| LLM             | Groq             |
-| Alternative LLM | Gemini           |
-| ORM             | SQLAlchemy       |
-| Data Processing | Pandas           |
+| Component             | Technology           |
+| --------------------- | -------------------- |
+| Frontend              | Streamlit            |
+| Backend               | Python               |
+| Database              | PostgreSQL           |
+| Vector Database       | ChromaDB             |
+| Embeddings            | all-MiniLM-L6-v2     |
+| Primary LLM           | Gemini 2.5 Flash     |
+| Secondary LLM         | Groq                 |
+| Data Processing       | Pandas               |
+| Database Connectivity | SQLAlchemy, Psycopg2 |
+
 
 ---
 
