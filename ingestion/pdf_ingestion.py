@@ -4,17 +4,27 @@ import uuid
 from database.chroma_setup import pdf_collection
 
 def clear_pdf_collection():
+    try:
+        existing = pdf_collection.get()
+        ids = existing.get("ids", [])
+        if ids:
+            batch_size = 100
+            for i in range(0, len(ids), batch_size):
+                batch = ids[i:i + batch_size]
+                try:
+                    pdf_collection.delete(ids=batch)
+                except Exception as e:
+                    print(f"Batch delete warning: {e}")
+        print("PDF collection cleared")
+    except Exception as e:
+        print("Clear PDF Error:", e)
 
-    existing = pdf_collection.get()
 
-    if existing["ids"]:
-        pdf_collection.delete(ids=existing["ids"])
+def add_pdf_to_chroma(uploaded_file):
 
-    print("PDF collection cleared")
+    uploaded_file.seek(0)
 
-def add_pdf_to_chroma(file_path):
-
-    reader = PdfReader(file_path)
+    reader = PdfReader(uploaded_file)
 
     text = ""
 
@@ -26,7 +36,7 @@ def add_pdf_to_chroma(file_path):
             text += page_text + "\n"
 
     metadata = f"""
-FILE: {file_path}
+FILE: {uploaded_file.name}
 
 PDF CONTENT:
 
@@ -40,11 +50,9 @@ PDF CONTENT:
         ids=[doc_id],
         metadatas=[
             {
-                "filename": file_path.split("\\")[-1]
+                "filename": uploaded_file.name
             }
         ]
     )
 
-    print(
-        f"{file_path} added to ChromaDB"
-    )
+    print(f"{uploaded_file.name} added to ChromaDB")
